@@ -1,0 +1,1208 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Alta E-Commerce",
+    "version": "1.0"
+  },
+  "host": "api.server.test",
+  "basePath": "/api/v1",
+  "schemes": [
+    "https"
+  ],
+  "security": [
+    {
+      "name": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": ""
+    },
+    {
+      "name": "Customer"
+    },
+    {
+      "name": "Admin"
+    }
+  ],
+  "parameters": {
+    "login": {
+      "name": "name",
+      "in": "body",
+      "description": "",
+      "schema": {
+      }
+    }
+  },
+  "paths": {
+    "/admin/checkouts/status": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "order_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success change status checkout",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/checkouts": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "success get checkouts",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Checkouts"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/categories/delete": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "name": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "success delete category",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+
+      }
+    },
+    "/admin/categories/edit": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "name": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },{
+          "name": "name",
+          "description": "",
+          "in": "body",
+          "schema": {
+            "type": "string",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        }],
+        "responses": {
+          "201": {
+            "description": "success add category",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Categories"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/categories/add": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [{
+          "name": "name",
+          "description": "",
+          "in": "body",
+          "schema": {
+            "type": "integer",
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        }],
+        "responses": {
+          "201": {
+            "description": "success add category",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Categories"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/categories/data": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "success get category",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Categories"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product/delete": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin feature delete data products",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "d",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          }],
+        "responses": {
+          "201": {
+            "description": "success edit product",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product/edit": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin feature edit data products",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "d",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "category_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "category_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "name",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "price",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "price": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "qty",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "qty": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "image",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "image": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }],
+        "responses": {
+          "201": {
+            "description": "success edit product",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "items": {
+                    "$ref": "#/definitions/Products"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/product/add": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin feature add data products",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "category_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "category_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "name",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "price",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "price": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "qty",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "qty": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "image",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "image": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }],
+        "responses": {
+          "200": {
+            "description": "success add product",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Products"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/products/data": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "Admin feature get data products",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Success registration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Products"
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "List Product with filter data",
+        "parameters": [
+          {
+            "name": "Category",
+            "in": "query",
+            "description": "Category ID for return list product with that category id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "code": 200,
+            "data": [
+              {
+                "id": 1,
+                "category_name": "",
+                "name": "",
+                "price": 0,
+                "image": "",
+                "stock": 0
+              },
+              {
+                "id": 2,
+                "category_name": "",
+                "name": "",
+                "price": 0,
+                "image": "",
+                "stock": 0
+              }
+            ],
+            "error": "",
+            "message": ""
+          }
+        }
+      }
+    },
+    "/cart": {
+      "get": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "get list product that customer added",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "id of user that had login in cookie",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "show list of products in cart",
+            "items": [
+              {
+                "id": 1,
+                "user_id": "",
+                "OrderItem_id": "",
+                "status": "",
+                "order_date": "",
+                "total": 0
+              }
+            ],
+            "error": "",
+            "message": ""
+          }
+        }
+      }
+    },
+    "/cart/add": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "add product to cart",
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "order_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "product_id",
+            "description": "product id from body",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "qty",
+            "description": "qty product to add in cart",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success add product to cart"
+          },
+          "400": {
+            "description": "failed add product to cart"
+          }
+        }
+      }
+    },
+    "/cart/delete": {
+      "delete": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "delete product in cart",
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "order_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "product_id",
+            "description": "product id from body",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "removed the product"
+          },
+          "400": {
+            "description": "product not found"
+          }
+        }
+      }
+    },
+    "/checkout": {
+      "post": {
+        "tags": [
+          "Customer"
+        ],
+        "description": "checkout from cart",
+        "parameters": [
+          {
+            "name": "order_id",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "integer",
+              "properties": {
+                "order_id": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "checkout success",
+            "data": [
+              {
+                "id": 1,
+                "user_id": "",
+                "product_id": "",
+                "status": "",
+                "order_date": "",
+                "total": 0
+              }
+            ]
+          },
+          "400": {
+            "description": "checkout failed"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Register",
+        "parameters": [
+          {
+            "name": "name",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "email",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "password",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "re_password",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "address",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success registration",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed registration ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                  }
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "Login ",
+        "parameters": [
+          {
+            "name": "email",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "password",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "string",
+              "properties": {
+                "password": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "isAdmin",
+            "description": "",
+            "in": "body",
+            "schema": {
+              "type": "boolean",
+              "properties": {
+                "isAdmin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "login Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Orders": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "OrderItem_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order_date": {
+          "type": "timestamp",
+          "format": "date"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "placed",
+            "approved",
+            "delivered"
+          ]
+        }
+      },
+      "xml": {
+        "name": "Orders"
+      }
+    },
+    "OrderItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "product_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "qty": {
+          "type": "timestamp",
+          "format": "date"
+        }
+      },
+      "xml": {
+        "name": "OrderItem"
+      }
+    },
+    "Transcation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total_payment": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type_payment": {
+          "type": "string",
+          "enum": [
+            "COD",
+            "credit card",
+            "transfer"
+          ]
+        }
+      },
+      "xml": {
+        "name": "OrderItem"
+      }
+    },
+    "Products": {
+      "type": "object",
+      "properties": {
+              "id": {
+                "type": "number"
+              },
+              "category_name": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              },
+              "qty": {
+                "type": "integer"
+              },
+              "image": {
+                "type": "string"
+              }
+      }
+    },
+    "Categories": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Checkouts": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "integer"
+        },
+        "total_price": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
