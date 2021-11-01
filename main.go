@@ -127,7 +127,7 @@ func main() {
 	)
 
 	func() {
-		address := fmt.Sprintf("%s:%d", cfg.AppHost, cfg.AppPort)
+		address := fmt.Sprintf(":%d", cfg.AppPort)
 
 		if err := e.Start(address); err != nil {
 			log.Info("Shutdown Echo Service")
